@@ -19,7 +19,7 @@ When("I confirm the email") do
 end
 
 Then("should see that my account is confirmed") do
-  message "Your email address has been successfully confirmed"
+  message = "Your email address has been successfully confirmed"
 
   expect(page).to have_content(message)
 end
