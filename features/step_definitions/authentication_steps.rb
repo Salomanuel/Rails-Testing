@@ -15,7 +15,7 @@ end
 When("I confirm the email") do
   open_email("tester@testdomain.test")
 
-  visit_in_email("confirm my account")
+  visit_in_email("Confirm my account")
 end
 
 Then("should see that my account is confirmed") do
