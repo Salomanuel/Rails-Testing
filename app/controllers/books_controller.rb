@@ -27,6 +27,13 @@ class BooksController < ApplicationController
     @book = current_user.books.build(book_params)
 
     @book.save
+
+    if @book.save
+      redirect_to @book, notice: 'Book was successfully created.'
+    else
+      render :new
+    end
+
     # @book = Book.new(book_params)
 
     # respond_to do |format|
