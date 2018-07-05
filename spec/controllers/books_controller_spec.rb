@@ -93,5 +93,24 @@ RSpec.describe BooksController, :type => :controller do
         expect(response).to render_template(:edit)
       end
     end
+
+    describe "DELETE #destroy" do
+      let(:book) { FactoryBot.build_stubbed(:book) }
+
+      before do
+        allow(Book).to receive(:find).and_return(book)
+        allow(book).to receive(:destroy)
+        
+        delete :destroy, :params => { :id => book.id }
+      end
+
+      it "deletes the book" do
+        expect(book).to have_received(:destroy)
+      end
+
+      it "redirects to the index page" do
+        expect(response).to redirect_to(books_path)
+      end
+    end
   end
 end
