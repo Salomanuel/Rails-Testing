@@ -74,17 +74,17 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  congit.around(:each) do |example|
+  config.around(:each) do |example|
     DatabaseCleaner.cleaning do
       example.run
     end
   end
 end
 
-require "support/controller_helpers"
+require "controller_helpers"
 
 RSpec.configure do |config|
-  config.include Warden::Test::Helper
+  # config.include Warden::Test::Helper
   config.include Devise::TestHelpers, :type => :controller
   config.include ControllerHelpers, :type => :controller
 end
