@@ -52,6 +52,6 @@ When("I remove a book from my inventory") do
 end
 
 Then("I should not see it listing in the inventory anymore") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to_not have_content("War and Peace")
 end
 
