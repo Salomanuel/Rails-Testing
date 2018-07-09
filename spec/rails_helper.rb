@@ -79,7 +79,7 @@ RSpec.configure do |config|
     end
   end
 
-  require "support/controller_helpers"
+  require "controller_helpers"
   RSpec.configure do |config|
 
     config.include Warden::Test::Helpers
