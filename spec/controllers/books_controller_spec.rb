@@ -20,4 +20,20 @@ RSpec.describe BooksController do
       expect(assigns(:books)).to eq(books)
     end
   end
+
+  describe "POST #create" do
+    let(:book) { FactoryBot.build_stubbed(:book) }
+    let(:params) { { name: "Moby-Dick", author: "Herman Melville" } }
+
+    before do
+      allow(book).to receive(:save)
+      allow(user).to receive_message_chain(:books, :build).and_return(book)
+    end
+
+    it "saves the book" do
+      post :create, params: { book: params }
+
+      expect(book).to have_received(:save)
+    end
+  end
 end
