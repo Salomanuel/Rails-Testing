@@ -65,7 +65,7 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
-  
+
   RSpec.configure do |config|
     config.before(:suite) do
       DatabaseCleaner.strategy = :transaction
@@ -79,7 +79,7 @@ RSpec.configure do |config|
     end
   end
 
-  require "support/controller/helpers"
+  require "support/controller_helpers"
   RSpec.configure do |config|
 
     config.include Warden::Test::Helpers
