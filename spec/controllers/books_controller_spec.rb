@@ -51,5 +51,17 @@ RSpec.describe BooksController do
         expect(flash[:notice]).to eq("Book was succesfully created.")
       end
     end
+
+    context "when the book can't be saved" do
+      before do 
+        allow(book).to receive(:save).and_return(false)
+
+        post :create, params: { book: params }
+      end
+
+      it "redirects back to the new page" do
+        expect(response).to render_template(:new)
+      end
+    end
   end
 end

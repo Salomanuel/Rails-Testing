@@ -28,6 +28,8 @@ class BooksController < ApplicationController
     @book = current_user.books.build(book_params)
     if @book.save
       redirect_to @book, notice: "Book was succesfully created."
+    else 
+      render :new
     end
   end
 
