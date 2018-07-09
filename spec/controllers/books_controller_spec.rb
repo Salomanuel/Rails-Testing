@@ -35,5 +35,21 @@ RSpec.describe BooksController do
 
       expect(book).to have_received(:save)
     end
+
+    context "when the book is succesfully saved" do
+      before do
+        allow(book).to receive(:save).and_return(true)
+
+        post :create, params: { book: params }
+      end
+
+      it "redirects to the book show page" do
+        expect(response).to redirect_to(book_path(book))
+      end
+
+      it "redirects to the book show page" do
+        expect(flash[:notice]).to eq("Book was succesfully created.")
+      end
+    end
   end
 end
