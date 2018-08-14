@@ -55,9 +55,9 @@ Given("I am logged in") do
 end
 
 When("I click on the log out button") do
-  pending # Write code here that turns the phrase above into concrete actions
+  click_button "Log out"
 end
 
 Then("I should be redirected to the log in page") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content("Log in")
 end
